@@ -1,2 +1,2 @@
 # devenv
-Developement envirement build with docker
+Developement envirement built with docker

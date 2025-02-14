@@ -1,0 +1,28 @@
+services:
+  web_app:
+    build: req/
+    container_name: app
+    image: app:tar
+    volumes:
+      - data:/home/data
+    ports:
+      - target: 9000
+        published: 9000
+    env_file:
+      - .env
+    restart:
+      on-failure
+
+volumes:
+  data:
+    name: data
+    driver: local
+    driver_opts:
+      type: bind
+      o: bind
+      device: "${PWD}/data"
+
+networks:
+  network:
+    name: network
+    driver: bridge

@@ -6,8 +6,8 @@ services:
     volumes:
       - data:/home/data
     ports:
-      - target: 9000
-        published: 9000
+      - target: 7417
+        published: 7417
     env_file:
       - .env
     restart:

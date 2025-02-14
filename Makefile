@@ -49,9 +49,11 @@ cleanvolumes:
 	@docker volume rm -f $(VOLUMES) > /dev/null 2>&1 || true
 	@echo "$(GREEN)\t\tDone$(RESET)"
 
-clean: cleancontainers cleanimages cleannetworks
+clean: cleancontainers
 
-fclean: clean cleanvolumes
+tclean: clean cleanimages cleannetworks
+
+fclean: tclean cleanvolumes
 
 prune: fclean
 	@echo -n " ✔ system prune ..."

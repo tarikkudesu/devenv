@@ -28,5 +28,6 @@ else
     mkdir -p data
 fi
 
+codeui
 cd ..
 rm -rf install.sh

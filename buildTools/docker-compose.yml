@@ -1,6 +1,6 @@
 services:
   web_app:
-    build: req/
+    build: .
     container_name: app
     image: app:tar
     volumes:

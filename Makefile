@@ -2,7 +2,7 @@ NETWORKS		=	$$(docker network ls -q --filter "type=custom")
 IMAGES			=	$$(docker image ls -aq)
 VOLUMES			=	$$(docker volume ls -q)
 CONTAINERS		=	$$(docker ps -aq)
-COMPOSEFILE		=	docker-compose.yml
+COMPOSEFILE		=	buildTools/docker-compose.yml
 GREEN			=	\033[0;32m
 RESET			=	\033[0m
 cols			=	$$(tput cols)

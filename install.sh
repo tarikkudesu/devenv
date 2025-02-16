@@ -29,5 +29,3 @@ else
 fi
 
 codeui
-cd ..
-rm -rf install.sh

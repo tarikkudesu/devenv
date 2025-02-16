@@ -27,5 +27,3 @@ else
     echo "Creating 'data' directory as no repository URL was provided..."
     mkdir -p data
 fi
-
-codeui

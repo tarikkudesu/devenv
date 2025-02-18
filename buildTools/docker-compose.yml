@@ -1,8 +1,8 @@
 services:
   web_app:
     build: .
-    container_name: app
-    image: app:tar
+    container_name: web_app
+    image: web_app:tar
     volumes:
       - data:/home/data
     ports:

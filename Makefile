@@ -25,7 +25,9 @@ stop:
 restart:
 	@docker compose -f $(COMPOSEFILE) $@
 in:
-	@docker exec -it app zsh
+	@docker exec -it web_app zsh
+load:
+	@docker load -i buildTools/web_app.tar
 
 ls:
 	@echo $(SE) && docker images && echo $(SE) && docker ps --all

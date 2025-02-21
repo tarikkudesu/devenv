@@ -11,7 +11,7 @@ SE				=	$$(printf "%-$(cols)s" "_" | tr ' ' '_')
 all: up
 
 up:
-	@docker compose -f $(COMPOSEFILE) $@ --build -d
+	@docker compose -f $(COMPOSEFILE) $@ -d
 down:
 	@docker compose -f $(COMPOSEFILE) $@
 build:

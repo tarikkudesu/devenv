@@ -53,15 +53,15 @@ cleanvolumes:
 
 clean: cleancontainers
 
-tclean: clean cleanimages cleannetworks
+tclean: clean cleanvolumes cleannetworks
 
-fclean: tclean cleanvolumes
+fclean: tclean cleanimages
 
 prune: fclean
 	@echo -n " ✔ system prune ..."
 	@docker system prune --all --force > /dev/null 2>&1 || true
 	@echo "$(GREEN)\t\tDone$(RESET)"
 
-re: fclean up
+re: tclean up in
 
 .PHONY: in up down build ps top stop restart ls cleancontainers cleanimages cleannetworks cleanvolumes clean fclean prune re

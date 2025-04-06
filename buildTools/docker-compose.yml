@@ -3,26 +3,12 @@ services:
     build: .
     container_name: web_app
     image: web_app:tar
-    volumes:
-      - data:/home/data
     ports:
       - target: 7417
         published: 7417
+    volumes:
+      - "${PWD}/data:/home/data"
     env_file:
       - .env
     restart:
       on-failure
-
-volumes:
-  data:
-    name: "${NAME}"
-    driver: local
-    driver_opts:
-      type: bind
-      o: bind
-      device: "${PWD}/data"
-
-networks:
-  network:
-    name: network
-    driver: bridge

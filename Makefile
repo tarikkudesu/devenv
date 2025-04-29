@@ -12,44 +12,44 @@ PROJECTNAME		=
 all: up
 
 up:
-	@docker compose -f $(COMPOSEFILE) $@ -d
+	@docker --log-level=error compose -f $(COMPOSEFILE) $@ -d
 down:
-	@docker compose -f $(COMPOSEFILE) $@
+	@docker --log-level=error compose -f $(COMPOSEFILE) $@
 build:
-	@docker compose -f $(COMPOSEFILE) $@
+	@docker --log-level=error compose -f $(COMPOSEFILE) $@
 ps:
-	@docker compose -f $(COMPOSEFILE) $@ --all
+	@docker --log-level=error compose -f $(COMPOSEFILE) $@ --all
 top:
-	@docker compose -f $(COMPOSEFILE) $@
+	@docker --log-level=error compose -f $(COMPOSEFILE) $@
 stop:
-	@docker compose -f $(COMPOSEFILE) $@
+	@docker --log-level=error compose -f $(COMPOSEFILE) $@
 restart:
-	@docker compose -f $(COMPOSEFILE) $@
+	@docker --log-level=error compose -f $(COMPOSEFILE) $@
 in:
-	@docker exec -it $(PROJECTNAME) zsh
+	@docker --log-level=error exec -it $(PROJECTNAME) zsh
 load:
-	@docker load -i buildTools/web_app.tar
+	@docker --log-level=error load -i buildTools/web_app.tar
 
 ls:
-	@echo $(SE) && docker images && echo $(SE) && docker ps --all
-	@echo $(SE) && docker volume ls && echo $(SE) && docker network ls --filter "type=custom"
+	@echo $(SE) && docker --log-level=error images && echo $(SE) && docker --log-level=error ps --all
+	@echo $(SE) && docker --log-level=error volume ls && echo $(SE) && docker --log-level=error network ls --filter "type=custom"
 
 cleancontainers:
 	@echo -n " ✔ cleaning containers ..."
-	@docker stop $(CONTAINERS) > /dev/null 2>&1 || true
-	@docker rm -f $(CONTAINERS) > /dev/null 2>&1 || true
+	@docker --log-level=error stop $(CONTAINERS) > /dev/null 2>&1 || true
+	@docker --log-level=error rm -f $(CONTAINERS) > /dev/null 2>&1 || true
 	@echo "$(GREEN)\tDone$(RESET)"
 cleanimages:
 	@echo -n " ✔ cleaning images ..."
-	@docker image rm -f $(IMAGES) > /dev/null 2>&1 || true
+	@docker --log-level=error image rm -f $(IMAGES) > /dev/null 2>&1 || true
 	@echo "$(GREEN)\t\tDone$(RESET)"
 cleannetworks:
 	@echo -n " ✔ cleaning networks ..."
-	@docker network rm -f $(NETWORKS) > /dev/null 2>&1 || true
+	@docker --log-level=error network rm -f $(NETWORKS) > /dev/null 2>&1 || true
 	@echo "$(GREEN)\tDone$(RESET)"
 cleanvolumes:
 	@echo -n " ✔ cleaning volumes ..."
-	@docker volume rm -f $(VOLUMES) > /dev/null 2>&1 || true
+	@docker --log-level=error volume rm -f $(VOLUMES) > /dev/null 2>&1 || true
 	@echo "$(GREEN)\t\tDone$(RESET)"
 
 clean: cleancontainers
@@ -60,7 +60,7 @@ fclean: tclean cleanimages
 
 prune: fclean
 	@echo -n " ✔ system prune ..."
-	@docker system prune --all --force > /dev/null 2>&1 || true
+	@docker --log-level=error system prune --all --force > /dev/null 2>&1 || true
 	@echo "$(GREEN)\t\tDone$(RESET)"
 
 re: tclean up in

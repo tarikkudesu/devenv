@@ -9,7 +9,7 @@ cols			=	$$(tput cols)
 SE				=	$$(printf "%-$(cols)s" "_" | tr ' ' '_')
 PROJECTNAME		=	
 
-all: up
+all: up in
 
 up:
 	@docker --log-level=error compose -f $(COMPOSEFILE) $@ -d

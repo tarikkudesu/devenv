@@ -52,13 +52,11 @@ cleanvolumes:
 	@docker --log-level=error volume rm -f $(VOLUMES) > /dev/null 2>&1 || true
 	@echo "$(GREEN)\t\tDone$(RESET)"
 
-clean: cleancontainers
+clean: docker-compose down -v
 
-tclean: clean cleanvolumes cleannetworks
+fclean: cleancontainers cleannetworks cleanvolumes
 
-fclean: tclean cleanimages
-
-prune: fclean
+prune: cleancontainers cleannetworks cleanvolumes cleanimages
 	@echo -n " ✔ system prune ..."
 	@docker --log-level=error system prune --all --force > /dev/null 2>&1 || true
 	@echo "$(GREEN)\t\tDone$(RESET)"

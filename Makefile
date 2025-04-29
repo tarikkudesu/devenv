@@ -7,6 +7,7 @@ GREEN			=	\033[0;32m
 RESET			=	\033[0m
 cols			=	$$(tput cols)
 SE				=	$$(printf "%-$(cols)s" "_" | tr ' ' '_')
+PROJECTNAME		=	
 
 all: up
 
@@ -25,7 +26,7 @@ stop:
 restart:
 	@docker compose -f $(COMPOSEFILE) $@
 in:
-	@docker exec -it web_app zsh
+	@docker exec -it $(PROJECTNAME) zsh
 load:
 	@docker load -i buildTools/web_app.tar
 

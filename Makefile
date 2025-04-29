@@ -52,7 +52,7 @@ cleanvolumes:
 	@docker --log-level=error volume rm -f $(VOLUMES) > /dev/null 2>&1 || true
 	@echo "$(GREEN)\t\tDone$(RESET)"
 
-clean: docker-compose down -v
+clean: docker compose down -v
 
 fclean: cleancontainers cleannetworks cleanvolumes
 

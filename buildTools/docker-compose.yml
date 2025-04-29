@@ -10,5 +10,6 @@ services:
       - "${PWD}/data:/home/data"
     env_file:
       - .env
+    network_mode: "none"
     restart:
       on-failure

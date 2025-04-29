@@ -61,6 +61,6 @@ prune: cleancontainers cleannetworks cleanvolumes cleanimages
 	@docker --log-level=error system prune --all --force > /dev/null 2>&1 || true
 	@echo "$(GREEN)\t\tDone$(RESET)"
 
-re: tclean up in
+re: clean up in
 
 .PHONY: in up down build ps top stop restart ls cleancontainers cleanimages cleannetworks cleanvolumes clean fclean prune re
